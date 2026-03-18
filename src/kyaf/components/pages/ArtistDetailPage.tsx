@@ -109,7 +109,7 @@ export function ArtistDetailPage({ onNavigate, slug, backPage }: ArtistDetailPag
          {/* Thumbnails */}
          {galleryImages.length > 1 && (
              <div className="absolute bottom-8 right-6 md:right-12 z-20 flex gap-2">
-                {galleryImages.map((src, index) => (
+                {galleryImages.map((src: string, index: number) => (
                    <button
                       key={index}
                       onClick={() => scrollTo(index)}
