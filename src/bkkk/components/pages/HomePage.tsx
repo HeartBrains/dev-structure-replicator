@@ -41,7 +41,7 @@ export function HomePage({ onNavigate }: { onNavigate?: (page: string, slug?: st
   const upcomingExhibitions = getUpcomingExhibitions(language);
 
   // Get current activities
-  const currentActivities = getMockPostsByType('activities', language);
+  const currentActivities = getMockPostsByType('activity', language);
 
   // Anchor sections - memoized to prevent recreation on every render
   const sections = useMemo(() => {
