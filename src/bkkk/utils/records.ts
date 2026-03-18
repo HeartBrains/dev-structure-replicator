@@ -22,7 +22,7 @@ export interface RecordItem {
 // Generate records from exhibitions data
 const today = new Date(2026, 2, 10); // March 10, 2026 (reference date)
 
-function getExhibitionStatus(fromDate: string, toDate: string, explicitStatus: RecordStatus): RecordStatus {
+function getExhibitionStatus(fromDate: string, toDate: string, explicitStatus?: RecordStatus): RecordStatus {
   // Priority 1: Use explicit status if provided
   if (explicitStatus) {
     return explicitStatus;
