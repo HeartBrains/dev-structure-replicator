@@ -52,7 +52,6 @@ export {
   getPastExhibitions,
   getAllExhibitions,
   getExhibitionBySlugWithLanguage,
-  getExhibitionsByYear,
   getPermanentExhibitions,
   searchExhibitions,
   exhibitionToWPPost
