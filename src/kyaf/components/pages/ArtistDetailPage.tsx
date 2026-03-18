@@ -61,7 +61,7 @@ export function ArtistDetailPage({ onNavigate, slug, backPage }: ArtistDetailPag
   if (error || !artistData) return <div className="min-h-screen flex items-center justify-center font-sans text-red-500">{language === 'th' ? 'ไม่พบศิลปิน' : 'Artist not found.'}</div>;
 
   // Get detail content
-  const detailContent = getDetailContentByLanguage(artistData.slug, language);
+  const detailContent = artistData ? (language === 'th' ? artistData.bioTH : artistData.bio) : '';
 
   // Use gallery from artistData
   const galleryImages = artistData.gallery && artistData.gallery.length > 0 
