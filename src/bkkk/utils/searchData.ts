@@ -208,7 +208,7 @@ export async function getFullSearchData(): Promise<SearchDocument[]> {
       id: `blog-${enPost.slug}-en`,
       title: enPost.title,
       content: stripHtml(enPost.content),
-      keywords: `blog article post ${enPost.author} ${enPost.categories.join(' ')} ${enPost.date} บทความ บล็อก`,
+      keywords: `blog article post ${(enPost as any).author || ''} ${(enPost.categories || []).join(' ')} ${enPost.date} บทความ บล็อก`,
       page: 'blog-detail',
       slug: enPost.slug,
       lang: 'en'
