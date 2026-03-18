@@ -46,7 +46,7 @@ export function analyzeAllRecords(): CategorySummary[] {
       title: ex.title.en,
       artist: ex.artist.en,
       dates: ex.dateDisplay.en,
-      status: ex.status
+      status: ex.status || determineStatus(ex.fromDate, ex.toDate)
     };
 
     if (ex.status === 'upcoming') exhibitionsSummary.upcoming.push(record);
