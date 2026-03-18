@@ -156,7 +156,7 @@ export function ArtistDetailPage({ onNavigate, slug, backPage }: ArtistDetailPag
                 <div className="md:sticky md:top-32">
                    <Reveal>
                       <h1 className={`text-xl md:text-2xl font-normal mb-2 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                         {language === 'th' ? artistData.name.th : artistData.name.en}
+                         {language === 'th' ? artistData?.nameTH : artistData?.name}
                       </h1>
                       <p className={`text-xl md:text-2xl font-normal text-gray-600 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
                          {language === 'th' ? artistData.period.th : artistData.period.en}
