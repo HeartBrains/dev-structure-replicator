@@ -293,7 +293,7 @@ function indexRecords(): SearchDocument[] {
   
   RECORDS.forEach(record => {
     // Skip if already in new data structure
-    if (exhibitionSlugs.has(record.slug) || activitySlugs.has(record.slug)) {
+    if (exhibitionSlugs.has(record.slug || '') || activitySlugs.has(record.slug || '')) {
       return;
     }
 
