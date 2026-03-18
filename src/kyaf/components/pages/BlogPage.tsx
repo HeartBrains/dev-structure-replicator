@@ -36,7 +36,7 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
     
     return sortedYears.map(year => ({
       year,
-      posts: grouped[year].sort((a, b) => {
+      posts: grouped[year].sort((a: any, b: any) => {
         // Sort posts within year by date (newest first)
         return b.date.localeCompare(a.date);
       })
