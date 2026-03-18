@@ -4,10 +4,11 @@ declare module 'figma:asset/*.png' {
 }
 
 // Versioned module declarations for Figma-generated imports
-// These strip version suffixes so TypeScript resolves types from the base packages
-
 declare module 'class-variance-authority@0.7.1' {
-  export * from 'class-variance-authority';
+  import type { VariantProps as VP } from 'class-variance-authority';
+  import { cva } from 'class-variance-authority';
+  export { cva };
+  export type VariantProps<T extends (...args: any) => any> = VP<T>;
 }
 
 declare module 'lucide-react@0.487.0' {
@@ -119,24 +120,39 @@ declare module '@radix-ui/react-tooltip@1.1.8' {
 }
 
 declare module 'embla-carousel-react@8.6.0' {
-  export * from 'embla-carousel-react';
-  export { default } from 'embla-carousel-react';
+  import useEmblaCarousel from 'embla-carousel-react';
+  import type { UseEmblaCarouselType } from 'embla-carousel-react';
+  export default useEmblaCarousel;
+  export type { UseEmblaCarouselType };
 }
 
 declare module 'react-hook-form@7.55.0' {
-  export * from 'react-hook-form';
+  export {
+    Controller,
+    FormProvider,
+    useFormContext,
+    useFormState,
+  } from 'react-hook-form';
+  export type {
+    ControllerProps,
+    FieldPath,
+    FieldValues,
+  } from 'react-hook-form';
 }
 
 declare module 'sonner@2.0.3' {
-  export * from 'sonner';
+  import { Toaster } from 'sonner';
+  import type { ToasterProps } from 'sonner';
+  export { Toaster };
+  export type { ToasterProps };
 }
 
 declare module 'next-themes@0.4.6' {
-  export * from 'next-themes';
+  export { useTheme, ThemeProvider } from 'next-themes';
 }
 
 declare module 'cmdk@1.1.1' {
-  export * from 'cmdk';
+  export { Command } from 'cmdk';
 }
 
 declare module 'recharts@2.15.2' {
@@ -144,7 +160,7 @@ declare module 'recharts@2.15.2' {
 }
 
 declare module 'input-otp@1.4.2' {
-  export * from 'input-otp';
+  export { OTPInput, OTPInputContext } from 'input-otp';
 }
 
 declare module 'react-day-picker@8.10.1' {
