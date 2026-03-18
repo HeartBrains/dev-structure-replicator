@@ -64,9 +64,9 @@ export function ArtistDetailPage({ onNavigate, slug, backPage }: ArtistDetailPag
   const detailContent = artistData ? (language === 'th' ? artistData.bioTH : artistData.bio) : '';
 
   // Use gallery from artistData
-  const galleryImages = artistData.gallery && artistData.gallery.length > 0 
+  const galleryImages: string[] = artistData && artistData.gallery && artistData.gallery.length > 0 
     ? artistData.gallery 
-    : [artistData.image];
+    : artistData ? [artistData.image] : [];
 
   return (
     <div className="w-full bg-white pb-24 min-h-screen">
