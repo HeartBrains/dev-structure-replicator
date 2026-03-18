@@ -144,7 +144,7 @@ export function HomePage({ onNavigate }: { onNavigate?: (page: string, slug?: st
                       <div className="aspect-[3/4] w-full bg-gray-100 overflow-hidden relative">
                         {item!.featuredImage && (
                           <ImageWithFallback 
-                            src={item!.featuredImage} 
+                            src={typeof item!.featuredImage === 'string' ? item!.featuredImage : item!.featuredImage?.sourceUrl || ''} 
                             alt={item!.title}
                             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                           />
