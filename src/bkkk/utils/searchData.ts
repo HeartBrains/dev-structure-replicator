@@ -116,8 +116,9 @@ export async function getFullSearchData(): Promise<SearchDocument[]> {
   // 3. Artists (Residency)
   ARTISTS_DATA.forEach(artist => {
       // Support both old and new data structure
-      const enContent = artist.content || (artist.bio ? `${artist.bio}${artist.statement || ''}` : '');
-      const thContent = artist.contentTH || (artist.bioTH ? `${artist.bioTH}${artist.statementTH || ''}` : enContent);
+      const artistAny = artist as any;
+      const enContent = artistAny.content || (artistAny.bio ? `${artistAny.bio}${artistAny.statement || ''}` : '');
+      const thContent = artistAny.contentTH || (artistAny.bioTH ? `${artistAny.bioTH}${artistAny.statementTH || ''}` : enContent);
       
       // EN
       data.push({
