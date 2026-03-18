@@ -80,7 +80,7 @@ export function ArtistDetailPage({ onNavigate, slug, backPage }: ArtistDetailPag
                 opts={{ align: "start", loop: true }}
              >
                 <CarouselContent className="-ml-0">
-                   {galleryImages.map((src, index) => (
+                   {galleryImages.map((src: string, index: number) => (
                       <CarouselItem key={index} className="pl-0">
                          <ImageWithFallback
                             src={src}
