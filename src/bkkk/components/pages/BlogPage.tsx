@@ -98,7 +98,7 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
                                         {/* Image */}
                                         <div className="aspect-[3/4] w-full bg-gray-200 overflow-hidden">
                                             <ImageWithFallback 
-                                                src={post.featuredImage.sourceUrl} 
+                                                src={post.featuredImage?.sourceUrl || ''} 
                                                 alt={post.title}
                                                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                                             />

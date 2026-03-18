@@ -44,7 +44,7 @@ function getExhibitionStatus(fromDate: string, toDate: string, explicitStatus?: 
   }
 }
 
-function getMovingImageStatus(fromDate: string, toDate: string, explicitStatus: RecordStatus): RecordStatus {
+function getMovingImageStatus(fromDate: string, toDate: string, explicitStatus?: RecordStatus): RecordStatus {
   // Priority 1: Use explicit status if provided
   if (explicitStatus) {
     return explicitStatus;

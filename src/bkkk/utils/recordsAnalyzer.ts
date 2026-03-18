@@ -5,7 +5,7 @@
 
 import { getExhibitionsWithStatus } from './exhibitionsDataNew';
 import { movingImagePrograms } from './movingImageData';
-import { residencyData } from './residencyData';
+import { ARTISTS_DATA } from './residencyData';
 import { determineStatus, Status } from './dateStatusHelper';
 
 interface RecordSummary {

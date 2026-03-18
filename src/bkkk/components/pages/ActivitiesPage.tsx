@@ -125,7 +125,7 @@ export function ActivitiesPage({ onNavigate, targetSectionId }: ActivitiesPagePr
                 >
                   <div className="aspect-[3/4] w-full bg-gray-100 overflow-hidden">
                     <ImageWithFallback 
-                      src={item.featuredImage.sourceUrl} 
+                      src={item.featuredImage?.sourceUrl || ''} 
                       alt={item.title}
                       className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />

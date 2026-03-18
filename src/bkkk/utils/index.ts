@@ -15,7 +15,7 @@ export type { WPImage, WPScheduleItem, WPPost } from './types';
 
 // Data - Exhibitions
 export { exhibitions, exhibitionToWPPost, getExhibitionsWithStatus, getExhibitionBySlug, getExhibitionsByStatus, getCurrentExhibitions, getUpcomingExhibitions, getPastExhibitions } from './exhibitionsDataNew';
-export type { Exhibition, ExhibitionWithStatus } from './exhibitionsDataNew';
+export type { Exhibition } from './exhibitionsDataNew';
 export { exhibitionHelpers } from './exhibitionHelpers';
 
 // Data - Moving Image
@@ -32,22 +32,22 @@ export { PRESS_ITEMS } from './pressDataBilingual';
 export { DIRECTORS, TEAM_GROUPS } from './teamDataBilingual';
 
 // Detail Content
+export type { DetailContent } from './detailContent';
 export { 
-  DetailContent,
   DETAIL_CONTENT,
   getDetailContent,
   getDetailsByCategory,
   getDetailContentByLanguage
 } from './detailContent';
 
+export type { DetailContentThai } from './detailContentThaiData';
 export {
-  DetailContentThai,
   DETAIL_CONTENT_THAI,
   getDetailContentThai
 } from './detailContentThaiData';
 
 // Search
-export { buildSearchData } from './searchData';
+export { getFullSearchData } from './searchData';
 export type { SearchDocument } from './searchData';
 
 // Date and Status Helpers

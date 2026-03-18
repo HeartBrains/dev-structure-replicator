@@ -220,7 +220,7 @@ export async function getFullSearchData(): Promise<SearchDocument[]> {
       id: `blog-${thPost.slug}-th`,
       title: thPost.title,
       content: stripHtml(thPost.content),
-      keywords: `blog article post ${thPost.author} ${thPost.categories.join(' ')} ${thPost.date} บทความ บล็อก`,
+      keywords: `blog article post ${(thPost as any).author || ''} ${(thPost.categories || []).join(' ')} ${thPost.date} บทความ บล็อก`,
       page: 'blog-detail',
       slug: thPost.slug,
       lang: 'th'

@@ -602,7 +602,7 @@ export interface ExhibitionWithStatus extends Exhibition {
 export function getExhibitionsWithStatus(): ExhibitionWithStatus[] {
   return exhibitions.map(exhibition => ({
     ...exhibition,
-    status: determineStatus(exhibition.fromDate, exhibition.toDate)
+    computedStatus: determineStatus(exhibition.fromDate, exhibition.toDate)
   }));
 }
 
@@ -613,26 +613,26 @@ export function getExhibitionBySlug(slug: string): ExhibitionWithStatus | undefi
   
   return {
     ...exhibition,
-    status: determineStatus(exhibition.fromDate, exhibition.toDate)
+    computedStatus: determineStatus(exhibition.fromDate, exhibition.toDate)
   };
 }
 
 // Helper function to filter exhibitions by status
 export function getExhibitionsByStatus(status: Status): ExhibitionWithStatus[] {
-  return getExhibitionsWithStatus().filter(ex => ex.status === status);
+  return getExhibitionsWithStatus().filter(ex => ex.computedStatus === status);
 }
 
-// Helper function to get current exhibition(s)
+// Helper function to get current exhibition(s) (overload - no language param version)
 export function getCurrentExhibitions(): ExhibitionWithStatus[] {
   return getExhibitionsByStatus('current');
 }
 
-// Helper function to get upcoming exhibitions
+// Helper function to get upcoming exhibitions (overload)
 export function getUpcomingExhibitions(): ExhibitionWithStatus[] {
   return getExhibitionsByStatus('upcoming');
 }
 
-// Helper function to get past exhibitions
+// Helper function to get past exhibitions (overload)
 export function getPastExhibitions(): ExhibitionWithStatus[] {
   return getExhibitionsByStatus('past');
 }
