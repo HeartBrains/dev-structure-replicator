@@ -84,7 +84,7 @@ export function ArtistDetailPage({ onNavigate, slug, backPage }: ArtistDetailPag
                       <CarouselItem key={index} className="pl-0">
                          <ImageWithFallback
                             src={src}
-                            alt={`${language === 'th' ? artistData.name.th : artistData.name.en} Gallery ${index + 1}`}
+                            alt={`${artistData ? (language === 'th' ? artistData.nameTH : artistData.name) : ''} Gallery ${index + 1}`}
                             className="w-full h-auto block opacity-90"
                          />
                       </CarouselItem>
