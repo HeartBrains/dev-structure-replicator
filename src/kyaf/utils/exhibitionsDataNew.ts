@@ -58,8 +58,7 @@ export interface Exhibition {
   };
   
   // Additional metadata
-  tags?: string; // comma-separated string for compatibility
-  tagsMulti?: {
+  tags?: string | {
     en: string[];
     th: string[];
   };
