@@ -55,20 +55,20 @@ export function ContactPage() {
 
                 {/* Contact Form */}
                 <form className="flex flex-col gap-6 w-full max-w-lg" onSubmit={(e) => e.preventDefault()}>
-                    <Input 
+                    <input 
                         placeholder={language === 'th' ? 'อีเมล' : 'Email'}
-                        className="rounded-none border-gray-300 h-12 text-[19px] placeholder:text-gray-400 font-sans"
+                        className="rounded-none border border-gray-300 h-12 text-[19px] placeholder:text-gray-400 font-sans px-3"
                     />
-                    <Textarea 
+                    <textarea 
                         placeholder={language === 'th' ? 'ข้อความสอบถาม' : 'Inquiry Box'}
-                        className="rounded-none border-gray-300 min-h-[200px] text-[19px] placeholder:text-gray-400 resize-none font-sans"
+                        className="rounded-none border border-gray-300 min-h-[200px] text-[19px] placeholder:text-gray-400 resize-none font-sans px-3 py-2"
                     />
-                    <Button 
+                    <button 
                         type="submit"
-                        className="rounded-none bg-[#1A1A1A] hover:bg-black text-white px-8 py-6 text-[19px] w-fit font-sans"
+                        className="rounded-none bg-[#1A1A1A] hover:bg-black text-white px-8 py-3 text-[19px] w-fit font-sans"
                     >
                         {language === 'th' ? 'ส่ง' : 'Submit'}
-                    </Button>
+                    </button>
                 </form>
             </div>
         </div>

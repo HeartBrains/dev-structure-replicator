@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { HeroSlider } from '../ui/HeroSlider';
 import { useLanguage } from '../../utils/languageContext';
@@ -9,6 +10,7 @@ interface LandingPageProps {
 
 export function LandingPage({ onEnter }: LandingPageProps) {
   const { language, t } = useLanguage();
+  const [hovered, setHovered] = useState<'bangkok' | 'khaoyai' | null>(null);
 
   const bangkokTitle = language === 'th' ? 'บางกอก\nคุนสต์ฮัลเลอ' : 'Bangkok\nKunsthalle';
   const khaoYaiTitle = language === 'th' ? 'Khao Yai\nArt Forest' : 'Khao Yai\nArt Forest';

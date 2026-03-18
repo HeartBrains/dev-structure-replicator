@@ -87,7 +87,7 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
             <main className="w-full md:w-1/2 flex flex-col gap-12 md:gap-16">
                 {filteredBlogs.map((yearGroup) => (
                     <div key={yearGroup.year} id={`year-${yearGroup.year}`} className="flex flex-col gap-12 md:gap-16">
-                        {yearGroup.posts.map((post) => (
+                        {yearGroup.posts.map((post: any) => (
                             <Reveal key={post.id}>
                                 <div 
                                     className="flex flex-col gap-6 cursor-pointer group w-full"

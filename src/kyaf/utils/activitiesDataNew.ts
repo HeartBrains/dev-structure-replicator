@@ -30,12 +30,15 @@ export interface Activity {
   // Status & Classification
   status: 'current' | 'upcoming' | 'past';
   year: string;
+  fromDate?: string; // ISO format (optional)
+  toDate?: string;   // ISO format or "Onwards" (optional)
   
   // Categories
   categories: {
     en: string[];
     th: string[];
   };
+  category?: string; // single category string for filtering
   
   // Media
   featuredImage: string;
@@ -47,6 +50,9 @@ export interface Activity {
     en: string;
     th: string;
   };
+  description?: { en: string; th: string }; // optional description
+  location?: { en: string; th: string }; // optional location
+  duration?: { en: string; th: string }; // optional duration
   
   // Additional metadata
   tags?: {

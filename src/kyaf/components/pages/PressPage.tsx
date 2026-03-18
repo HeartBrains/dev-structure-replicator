@@ -12,7 +12,7 @@ export function PressPage() {
     <div className="w-full bg-white min-h-screen pb-12">
       {/* Hero Section */}
       <ParallaxHero 
-        image={ASSETS.BUILDING} 
+        image={ASSETS.ABOUT_HERO} 
         height="h-[80vh]"
       >
         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />

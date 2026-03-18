@@ -37,6 +37,8 @@ export interface Exhibition {
   // Status & Classification
   status: 'current' | 'upcoming' | 'past';
   year: string;
+  fromDate?: string; // ISO format (optional - used for date-based filtering fallback)
+  toDate?: string;   // ISO format or "Onwards" (optional)
   
   // Categories
   categories: {
@@ -56,7 +58,8 @@ export interface Exhibition {
   };
   
   // Additional metadata
-  tags?: {
+  tags?: string; // comma-separated string for compatibility
+  tagsMulti?: {
     en: string[];
     th: string[];
   };

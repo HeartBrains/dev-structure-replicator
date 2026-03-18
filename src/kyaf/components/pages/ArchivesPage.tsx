@@ -119,8 +119,8 @@ export function ArchivesPage({ onNavigate }: ArchivesPageProps) {
     <div className="w-full bg-white min-h-screen pb-24">
       {/* Hero */}
       <ParallaxHero 
-        imageSrc={IMG_MADRID_SRC}
-        imageAlt={language === 'th' ? 'คลังข้อมูล' : 'Archives'}
+        image={IMG_MADRID_SRC}
+        height="h-[60vh] md:h-[80vh]"
       />
 
       {/* Main Content */}

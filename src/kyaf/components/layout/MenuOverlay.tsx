@@ -137,7 +137,7 @@ export function MenuOverlay({ isOpen, onClose, onNavigate, activePage }: MenuOve
           >
             <div 
               className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${ASSETS.BUILDING})` }}
+              style={{ backgroundImage: `url(${ASSETS.ABOUT_HERO})` }}
               onClick={onClose}
             />
 
