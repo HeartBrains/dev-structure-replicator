@@ -41,7 +41,7 @@ export function HomePage({ onNavigate }: { onNavigate?: (page: string, slug?: st
   const upcomingExhibitions = getUpcomingExhibitions(language);
 
   // Get current activities
-  const currentActivities = getMockPostsByType('activities', language);
+  const currentActivities = getMockPostsByType('activity', language);
 
   // Anchor sections - memoized to prevent recreation on every render
   const sections = useMemo(() => {
@@ -144,7 +144,7 @@ export function HomePage({ onNavigate }: { onNavigate?: (page: string, slug?: st
                       <div className="aspect-[3/4] w-full bg-gray-100 overflow-hidden relative">
                         {item!.featuredImage && (
                           <ImageWithFallback 
-                            src={item!.featuredImage} 
+                            src={typeof item!.featuredImage === 'string' ? item!.featuredImage : item!.featuredImage?.sourceUrl || ''} 
                             alt={item!.title}
                             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                           />
@@ -171,7 +171,7 @@ export function HomePage({ onNavigate }: { onNavigate?: (page: string, slug?: st
                         {item!.featuredImage && (
                           <div className="aspect-[3/4] w-full bg-gray-100 overflow-hidden relative">
                             <ImageWithFallback 
-                              src={item!.featuredImage} 
+                              src={typeof item!.featuredImage === 'string' ? item!.featuredImage : item!.featuredImage?.sourceUrl || ''} 
                               alt={item!.title}
                               className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                             />
@@ -240,7 +240,7 @@ export function HomePage({ onNavigate }: { onNavigate?: (page: string, slug?: st
                       <div key={item.id} className="flex flex-col gap-6 w-full cursor-pointer group" onClick={() => onNavigate?.('activity-detail', item.slug)}>
                         <div className="aspect-[3/4] w-full bg-gray-100 overflow-hidden relative">
                           <ImageWithFallback 
-                            src={item.featuredImage.sourceUrl} 
+                            src={item.featuredImage?.sourceUrl || ''} 
                             alt={item.title}
                             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                           />

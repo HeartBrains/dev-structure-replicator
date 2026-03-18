@@ -5,7 +5,6 @@
 
 // Language Context
 export { useLanguage, LanguageProvider } from './languageContext';
-export type { LanguageContextType } from './languageContext';
 
 // Translations
 export { translations } from './translations';
@@ -53,7 +52,6 @@ export {
   getPastExhibitions,
   getAllExhibitions,
   getExhibitionBySlugWithLanguage,
-  getExhibitionsByYear,
   getPermanentExhibitions,
   searchExhibitions,
   exhibitionToWPPost
@@ -108,10 +106,10 @@ export type { Activity as ActivityData } from './activitiesDataNew';
 export { createBilingualPost, exhibitionToWPPost as convertExhibitionToPost, activityToWPPost as convertActivityToPost, getPostBySlug } from './dataAdapter';
 export * from './imageConstants';
 
-// Legacy Data (for backward compatibility)
-export { TEAM_DATA_BILINGUAL } from './teamDataBilingual';
-export { PRESS_DATA_BILINGUAL } from './pressDataBilingual';
-export { RESIDENCY_DATA_BILINGUAL } from './residencyData';
+// Legacy Data (for backward compatibility) - uncomment when data is available
+// export { TEAM_DATA_BILINGUAL } from './teamDataBilingual';
+// export { PRESS_DATA_BILINGUAL } from './pressDataBilingual';
+// export { RESIDENCY_DATA_BILINGUAL } from './residencyData';
 
 /**
  * Usage Examples:

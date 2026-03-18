@@ -12,7 +12,7 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import { Reveal } from '../ui/Reveal';
 import { useLanguage } from '../../utils/languageContext';
-import { ARTISTS } from '../../utils/mockData';
+import { getResidencyBySlug } from '../../utils/residencyDataNew';
 import { useScrollHide } from '../../utils/useScrollHide';
 
 interface ArtistDetailPageProps {
@@ -61,12 +61,12 @@ export function ArtistDetailPage({ onNavigate, slug, backPage }: ArtistDetailPag
   if (error || !artistData) return <div className="min-h-screen flex items-center justify-center font-sans text-red-500">{language === 'th' ? 'ไม่พบศิลปิน' : 'Artist not found.'}</div>;
 
   // Get detail content
-  const detailContent = getDetailContentByLanguage(artistData.slug, language);
+  const detailContent = artistData ? (language === 'th' ? artistData.bioTH : artistData.bio) : '';
 
   // Use gallery from artistData
-  const galleryImages = artistData.gallery && artistData.gallery.length > 0 
+  const galleryImages: string[] = artistData && artistData.gallery && artistData.gallery.length > 0 
     ? artistData.gallery 
-    : [artistData.image];
+    : artistData ? [artistData.image] : [];
 
   return (
     <div className="w-full bg-white pb-24 min-h-screen">
@@ -80,11 +80,11 @@ export function ArtistDetailPage({ onNavigate, slug, backPage }: ArtistDetailPag
                 opts={{ align: "start", loop: true }}
              >
                 <CarouselContent className="-ml-0">
-                   {galleryImages.map((src, index) => (
+                   {galleryImages.map((src: string, index: number) => (
                       <CarouselItem key={index} className="pl-0">
                          <ImageWithFallback
                             src={src}
-                            alt={`${language === 'th' ? artistData.name.th : artistData.name.en} Gallery ${index + 1}`}
+                            alt={`${artistData ? (language === 'th' ? artistData.nameTH : artistData.name) : ''} Gallery ${index + 1}`}
                             className="w-full h-auto block opacity-90"
                          />
                       </CarouselItem>
@@ -109,7 +109,7 @@ export function ArtistDetailPage({ onNavigate, slug, backPage }: ArtistDetailPag
          {/* Thumbnails */}
          {galleryImages.length > 1 && (
              <div className="absolute bottom-8 right-6 md:right-12 z-20 flex gap-2">
-                {galleryImages.map((src, index) => (
+                {galleryImages.map((src: string, index: number) => (
                    <button
                       key={index}
                       onClick={() => scrollTo(index)}
@@ -156,10 +156,10 @@ export function ArtistDetailPage({ onNavigate, slug, backPage }: ArtistDetailPag
                 <div className="md:sticky md:top-32">
                    <Reveal>
                       <h1 className={`text-xl md:text-2xl font-normal mb-2 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                         {language === 'th' ? artistData.name.th : artistData.name.en}
+                         {language === 'th' ? artistData?.nameTH : artistData?.name}
                       </h1>
                       <p className={`text-xl md:text-2xl font-normal text-gray-600 ${language === 'th' ? 'leading-[1.82em]' : ''}`}>
-                         {language === 'th' ? artistData.period.th : artistData.period.en}
+                         {language === 'th' ? artistData?.periodTH : artistData?.period}
                       </p>
                    </Reveal>
                 </div>

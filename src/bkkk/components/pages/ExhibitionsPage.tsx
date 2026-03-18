@@ -6,7 +6,7 @@ import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { getEmptyStateMessage, siteConfig } from '../../utils/siteConfig';
 
 // Categorize exhibition status using ISO dates
-function getExhibitionStatus(fromDate: string, toDate: string, explicitStatus: 'current' | 'upcoming' | 'past', referenceDate: Date): 'current' | 'upcoming' | 'past' | null {
+function getExhibitionStatus(fromDate: string, toDate: string, explicitStatus: 'current' | 'upcoming' | 'past' | undefined, referenceDate: Date): 'current' | 'upcoming' | 'past' | null {
   // Priority 1: Use explicit status if provided
   if (explicitStatus) {
     return explicitStatus;

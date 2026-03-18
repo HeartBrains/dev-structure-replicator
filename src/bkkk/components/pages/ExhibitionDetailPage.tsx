@@ -44,16 +44,17 @@ export function ExhibitionDetailPage({ onNavigate, exhibition, slug, backPage }:
     if (slug) {
         setLoading(true);
         // Try to get exhibition from the new exhibitions data first
-        let data = exhibitions.find(e => e.slug === slug);
-        if (data) {
-            data = exhibitionToWPPost(data, language);
+        const rawExhibition = exhibitions.find(e => e.slug === slug);
+        let wpPost: WPPost | undefined;
+        if (rawExhibition) {
+            wpPost = exhibitionToWPPost(rawExhibition, language);
         }
         // Fallback to mock data if not found
-        if (!data) {
-            data = getMockPost(slug, language);
+        if (!wpPost) {
+            wpPost = getMockPost(slug, language);
         }
-        if (data) {
-            setPostData(data);
+        if (wpPost) {
+            setPostData(wpPost);
             // Get detail content based on current language
             const content = getDetailContentByLanguage(slug, language) || '';
             setDetailContent(content);

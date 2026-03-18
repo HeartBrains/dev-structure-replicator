@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect, type ReactNode } from 'react';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { Reveal } from '../ui/Reveal';
 import { useLanguage } from '../../utils/languageContext';

@@ -14,46 +14,54 @@ export { LanguageProvider, useLanguage } from './languageContext';
 export type { WPImage, WPScheduleItem, WPPost } from './types';
 
 // Data - Exhibitions
-export { exhibitionsDataNew } from './exhibitionsDataNew';
+export { exhibitions, exhibitionToWPPost, getExhibitionsWithStatus, getExhibitionBySlug, getExhibitionsByStatus, getCurrentExhibitions, getUpcomingExhibitions, getPastExhibitions } from './exhibitionsDataNew';
+export type { Exhibition } from './exhibitionsDataNew';
 export { exhibitionHelpers } from './exhibitionHelpers';
 
 // Data - Moving Image
-export { movingImageData } from './movingImageData';
-export { movingImageGalleryData } from './movingImageGalleryData';
+export { movingImagePrograms, getCurrentMovingImageProgram } from './movingImageData';
+export { movingImageGalleries } from './movingImageGalleryData';
 
 // Data - Residency
-export { residencyData } from './residencyData';
-export { residencyCreditData } from './residencyCreditData';
+export { ARTISTS_DATA, getArtistWithContent } from './residencyData';
+export { RESIDENCY_CREDITS } from './residencyCreditData';
 
 // Data - Other
-export { teamDataBilingual } from './teamDataBilingual';
-export { pressDataBilingual } from './pressDataBilingual';
-export { mockDataBilingual } from './mockDataBilingual';
+export { MOCK_POSTS_BILINGUAL, MOCK_POSTS, getMockPost, getMockPostsByType } from './mockDataBilingual';
+export { PRESS_ITEMS } from './pressDataBilingual';
+export { DIRECTORS, TEAM_GROUPS } from './teamDataBilingual';
 
 // Detail Content
+export type { DetailContent } from './detailContent';
 export { 
-  detailContent,
+  DETAIL_CONTENT,
   getDetailContent,
-  getAllDetailSlugs 
+  getDetailsByCategory,
+  getDetailContentByLanguage
 } from './detailContent';
 
+export type { DetailContentThai } from './detailContentThaiData';
 export {
-  detailContentThaiData,
-  getDetailContentThai,
-  getAllDetailSlugsThai
+  DETAIL_CONTENT_THAI,
+  getDetailContentThai
 } from './detailContentThaiData';
 
 // Search
-export { searchData } from './searchData';
+export { getFullSearchData } from './searchData';
+export type { SearchDocument } from './searchData';
 
 // Date and Status Helpers
 export { 
   determineStatus,
-  formatDateRange,
+  determineStatusFromPeriod,
+  isCurrentlyActive,
   isUpcoming,
-  isCurrent,
-  isPast 
+  isPast,
+  sortByStatusAndDate,
+  getCurrentDate,
+  parseDate
 } from './dateStatusHelper';
+export type { Status } from './dateStatusHelper';
 
 // Assets
 export * from './assets';

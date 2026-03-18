@@ -1,11 +1,13 @@
+import { useEffect, useState } from 'react';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { Reveal } from '../ui/Reveal';
-import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useLanguage } from '../../utils/languageContext';
 import { getTranslation } from '../../utils/translations';
 import { IMG_FOG_SRC, IMG_PULSUS_SRC } from '../../utils/imageConstants';
+import { ParallaxHero } from '../ui/ParallaxHero';
+import { residencies as ARTISTS_DATA } from '../../utils/residencyDataNew';
 
 interface ResidencyPageProps {
   onNavigate?: (page: string, slug?: string) => void;

@@ -5,7 +5,7 @@
 
 import { getExhibitionsWithStatus } from './exhibitionsDataNew';
 import { movingImagePrograms } from './movingImageData';
-import { residencyData } from './residencyData';
+import { ARTISTS_DATA } from './residencyData';
 import { determineStatus, Status } from './dateStatusHelper';
 
 interface RecordSummary {
@@ -46,7 +46,7 @@ export function analyzeAllRecords(): CategorySummary[] {
       title: ex.title.en,
       artist: ex.artist.en,
       dates: ex.dateDisplay.en,
-      status: ex.status
+      status: ex.status || determineStatus(ex.fromDate, ex.toDate)
     };
 
     if (ex.status === 'upcoming') exhibitionsSummary.upcoming.push(record);
@@ -83,21 +83,22 @@ export function analyzeAllRecords(): CategorySummary[] {
   results.push(movingImageSummary);
 
   // 3. RESIDENCY
+  // Note: ARTISTS_DATA doesn't have fromDate/toDate, so we use the status field directly
   const residencySummary: CategorySummary = {
     category: 'RESIDENCY',
     upcoming: [],
     current: [],
     past: [],
-    total: residencyData.length
+    total: ARTISTS_DATA.length
   };
 
-  residencyData.forEach(res => {
-    const status = determineStatus(res.fromDate, res.toDate);
+  ARTISTS_DATA.forEach((res: any) => {
+    const status: Status = res.status || 'past';
     const record: RecordSummary = {
       slug: res.slug,
-      title: res.title.en,
-      artist: res.artist.en,
-      dates: res.dateDisplay.en,
+      title: res.name,
+      artist: res.name,
+      dates: res.period,
       status
     };
 

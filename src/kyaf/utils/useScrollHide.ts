@@ -18,7 +18,7 @@ export function useScrollHide() {
     window.addEventListener('resize', checkMobile);
 
     let lastScrollY = window.scrollY;
-    let scrollTimeout: NodeJS.Timeout;
+    let scrollTimeout: ReturnType<typeof setTimeout>;
 
     const handleScroll = () => {
       if (!isMobile) return;

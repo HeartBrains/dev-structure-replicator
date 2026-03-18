@@ -580,12 +580,11 @@ export function exhibitionToWPPost(exhibition: Exhibition, language: 'en' | 'th'
     id: exhibition.id,
     title: exhibition.title[language],
     slug: exhibition.slug,
-    excerpt: '', // Can be derived from content if needed
+    type: 'exhibition',
     content: content,
-    featuredImage: exhibition.featuredImage || exhibition.gallery?.[0] || '',
+    featuredImage: { sourceUrl: exhibition.featuredImage || exhibition.gallery?.[0] || '', altText: exhibition.title[language] },
     date: exhibition.dateDisplay[language],
     categories: ['Exhibition'],
-    tags: exhibition.tags?.split(',').map(t => t.trim()) || [],
     gallery: exhibition.gallery,
     acf: {
       artist: exhibition.artist[language],
@@ -595,11 +594,15 @@ export function exhibitionToWPPost(exhibition: Exhibition, language: 'en' | 'th'
   };
 }
 
+export interface ExhibitionWithStatus extends Exhibition {
+  computedStatus: Status;
+}
+
 // Helper function to get all exhibitions with computed status
 export function getExhibitionsWithStatus(): ExhibitionWithStatus[] {
   return exhibitions.map(exhibition => ({
     ...exhibition,
-    status: determineStatus(exhibition.fromDate, exhibition.toDate)
+    computedStatus: determineStatus(exhibition.fromDate, exhibition.toDate)
   }));
 }
 
@@ -610,26 +613,26 @@ export function getExhibitionBySlug(slug: string): ExhibitionWithStatus | undefi
   
   return {
     ...exhibition,
-    status: determineStatus(exhibition.fromDate, exhibition.toDate)
+    computedStatus: determineStatus(exhibition.fromDate, exhibition.toDate)
   };
 }
 
 // Helper function to filter exhibitions by status
 export function getExhibitionsByStatus(status: Status): ExhibitionWithStatus[] {
-  return getExhibitionsWithStatus().filter(ex => ex.status === status);
+  return getExhibitionsWithStatus().filter(ex => ex.computedStatus === status);
 }
 
-// Helper function to get current exhibition(s)
+// Helper function to get current exhibition(s) (overload - no language param version)
 export function getCurrentExhibitions(): ExhibitionWithStatus[] {
   return getExhibitionsByStatus('current');
 }
 
-// Helper function to get upcoming exhibitions
+// Helper function to get upcoming exhibitions (overload)
 export function getUpcomingExhibitions(): ExhibitionWithStatus[] {
   return getExhibitionsByStatus('upcoming');
 }
 
-// Helper function to get past exhibitions
+// Helper function to get past exhibitions (overload)
 export function getPastExhibitions(): ExhibitionWithStatus[] {
   return getExhibitionsByStatus('past');
 }

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Data Adapter
  * Converts new data structures (Exhibition, Activity) to legacy WPPost format

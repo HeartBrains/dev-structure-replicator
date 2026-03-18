@@ -116,8 +116,9 @@ export async function getFullSearchData(): Promise<SearchDocument[]> {
   // 3. Artists (Residency)
   ARTISTS_DATA.forEach(artist => {
       // Support both old and new data structure
-      const enContent = artist.content || (artist.bio ? `${artist.bio}${artist.statement || ''}` : '');
-      const thContent = artist.contentTH || (artist.bioTH ? `${artist.bioTH}${artist.statementTH || ''}` : enContent);
+      const artistAny = artist as any;
+      const enContent = artistAny.content || (artistAny.bio ? `${artistAny.bio}${artistAny.statement || ''}` : '');
+      const thContent = artistAny.contentTH || (artistAny.bioTH ? `${artistAny.bioTH}${artistAny.statementTH || ''}` : enContent);
       
       // EN
       data.push({
@@ -207,7 +208,7 @@ export async function getFullSearchData(): Promise<SearchDocument[]> {
       id: `blog-${enPost.slug}-en`,
       title: enPost.title,
       content: stripHtml(enPost.content),
-      keywords: `blog article post ${enPost.author} ${enPost.categories.join(' ')} ${enPost.date} บทความ บล็อก`,
+      keywords: `blog article post ${(enPost as any).author || ''} ${(enPost.categories || []).join(' ')} ${enPost.date} บทความ บล็อก`,
       page: 'blog-detail',
       slug: enPost.slug,
       lang: 'en'
@@ -219,7 +220,7 @@ export async function getFullSearchData(): Promise<SearchDocument[]> {
       id: `blog-${thPost.slug}-th`,
       title: thPost.title,
       content: stripHtml(thPost.content),
-      keywords: `blog article post ${thPost.author} ${thPost.categories.join(' ')} ${thPost.date} บทความ บล็อก`,
+      keywords: `blog article post ${(thPost as any).author || ''} ${(thPost.categories || []).join(' ')} ${thPost.date} บทความ บล็อก`,
       page: 'blog-detail',
       slug: thPost.slug,
       lang: 'th'
