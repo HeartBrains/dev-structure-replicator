@@ -1,5 +1,5 @@
 import { ImageWithFallback } from '../figma/ImageWithFallback';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone, Facebook, Instagram, Globe } from 'lucide-react';
 import { Reveal } from '../ui/Reveal';
 import { useLanguage } from '../../utils/languageContext';
 import { HeroSlider } from '../ui/HeroSlider';
