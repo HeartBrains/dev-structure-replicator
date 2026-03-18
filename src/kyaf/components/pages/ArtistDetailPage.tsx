@@ -12,7 +12,7 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import { Reveal } from '../ui/Reveal';
 import { useLanguage } from '../../utils/languageContext';
-import { ARTISTS } from '../../utils/mockData';
+import { getResidencyBySlug } from '../../utils/residencyDataNew';
 import { useScrollHide } from '../../utils/useScrollHide';
 
 interface ArtistDetailPageProps {
