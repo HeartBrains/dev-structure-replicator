@@ -580,12 +580,11 @@ export function exhibitionToWPPost(exhibition: Exhibition, language: 'en' | 'th'
     id: exhibition.id,
     title: exhibition.title[language],
     slug: exhibition.slug,
-    excerpt: '', // Can be derived from content if needed
+    type: 'exhibition',
     content: content,
-    featuredImage: exhibition.featuredImage || exhibition.gallery?.[0] || '',
+    featuredImage: { sourceUrl: exhibition.featuredImage || exhibition.gallery?.[0] || '', altText: exhibition.title[language] },
     date: exhibition.dateDisplay[language],
     categories: ['Exhibition'],
-    tags: exhibition.tags?.split(',').map(t => t.trim()) || [],
     gallery: exhibition.gallery,
     acf: {
       artist: exhibition.artist[language],
@@ -593,6 +592,10 @@ export function exhibitionToWPPost(exhibition: Exhibition, language: 'en' | 'th'
       imageCredits: exhibition.imageCredits
     }
   };
+}
+
+export interface ExhibitionWithStatus extends Exhibition {
+  computedStatus: Status;
 }
 
 // Helper function to get all exhibitions with computed status
