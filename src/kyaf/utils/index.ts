@@ -5,7 +5,6 @@
 
 // Language Context
 export { useLanguage, LanguageProvider } from './languageContext';
-export type { LanguageContextType } from './languageContext';
 
 // Translations
 export { translations } from './translations';
